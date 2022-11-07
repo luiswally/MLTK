@@ -181,5 +181,5 @@ harvester = TwitterDocumentHarvester(query=query, limit=limit, min_likes=min_lik
 harvester.update_config(min_retweets=50, independent_filters=True) 
 
 # Produce output file
-harvester.generate_file('./exports/my-twitter-documents.txt')
+harvester.generate_file('./my-twitter-documents.txt')
 ```
