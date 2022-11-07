@@ -79,7 +79,7 @@ min_likes = 20
 # Create document harvester
 harvester = TwitterDocumentHarvester(query=query, limit=limit, min_likes=min_likes)
 ```
-
+----
 #### def update_config(self, language=None, query=None, limit=-1, min_likes=-1, min_retweets=-1, independent_filters=None):
 
 _Description:_
@@ -102,6 +102,7 @@ harvester = TwitterDocumentHarvester(query=query, limit=limit, min_likes=min_lik
 # Update filter criteria and logical operator in filter clause.
 harvester.update_config(min_retweets=27, independent_filters=True)
 ```
+----
 #### def harvest_tweets(self):
 _Description:_
 Function that works with `snscrape` Twitter module to fetch relevant tweets based on the `TwitterDocumentHarvester` configured filter and search criteria.
@@ -124,7 +125,7 @@ harvester = TwitterDocumentHarvester(query=query, limit=limit, min_likes=min_lik
 # harvest_tweets() is automatically invoked at the end of update_config() method
 harvester.update_config(min_retweets=27, independent_filters=True) 
 ```
-
+----
 #### def get_final_query(self):
 _Description:_
 Helper function used to compose the filter clause and combine it with the search clause prior to querying Twitter. This considers the `self.independent_filter` value when composing the filter clause with an __AND__ or an __OR__.
@@ -156,7 +157,7 @@ _Output_
 od of War AND (lang:en) AND (min_faves:100 OR min_retweets:50)
 ```
 
-
+----
 #### def generate_file(self, filepath='./documents.txt'):
 _Description:_
 Generates a text output file with the provided filename and path.
@@ -183,3 +184,4 @@ harvester.update_config(min_retweets=50, independent_filters=True)
 # Produce output file
 harvester.generate_file('./my-twitter-documents.txt')
 ```
+----
