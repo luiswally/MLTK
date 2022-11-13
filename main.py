@@ -52,9 +52,9 @@ def harvest_documents():
 
 def main():
     harvest_documents()
-    rank_documents()
-    analyze_documents()
-    report_results()
+    # rank_documents()
+    # analyze_documents()
+    # report_results()
 
 if __name__ == "__main__":
     main()
