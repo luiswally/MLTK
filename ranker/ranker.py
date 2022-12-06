@@ -1,5 +1,5 @@
-#import metapy
-#import pytoml
+import metapy
+import pytoml
 import math
 import pandas as pd
 
@@ -57,7 +57,7 @@ class Ranker:
     def calcIDF(self, map):
         idf ={}
         for i in map:
-            idf[i] = math.log(len(self.tweets)/self.doc_count[i])
+            idf[i] = math.log((len(self.tweets) + 1)/self.doc_count[i])
         self.idf = idf
     
     def scoreAndDump(self):
@@ -78,5 +78,3 @@ class Ranker:
         for i in self.tweet_score_dump[0:50]:
             f.write(str(i[1][1]) + " *** " + i[0])
         f.close()
-
-Ranker(None)
