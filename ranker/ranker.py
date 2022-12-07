@@ -102,7 +102,7 @@ class Ranker:
 
     def writeFile(self):
         # Writes the top k tweets into the output file
-        self.k = min(self.k, self.tweet_score_dump) # Can not output more tweets than what is scored
+        self.k = min(self.k, len(self.tweet_score_dump)) # Can not output more tweets than what is scored
         rankedFilePath = self.filePath.replace("results/harvested_", "results/ranked_")
         # f = open('results/RankerOutput.txt', 'w')
         f = open(rankedFilePath, 'w')
@@ -110,4 +110,4 @@ class Ranker:
             f.write(str(i[1][1]) + " *** " + i[0])
         f.close()
 
-#Ranker(filepath, 20) - This is the way to call this class, the parameter to the constructor being the results filepath and the number of top tweets you would like to retrieve.
+#Ranker("filepath", 20) - This is the way to call this class, the parameter to the constructor being the results filepath and the number of top tweets you would like to retrieve.
