@@ -1,3 +1,2 @@
 #!/bin/sh
-# ./testing.py
-./rankerTemp.py
+./rankerScript.py
