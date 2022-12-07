@@ -1,6 +1,6 @@
 # Author: Luis Wally Chavez Quiroz
 # Email: lwchave2@illinois.edu
-# Date: 11.12.2022
+# Date: 12.6.2022
 # Description: Script for running MLTK 
 
 from twitterDocumentHarvester import TwitterDocumentHarvester
@@ -39,8 +39,6 @@ def initialize_results():
     os.makedirs(directory_results)
     str_date_time = time_log()
 
-
-
 def sentiment_request():
     greeting_message = "Welcome to MLTK, a social media sentiment analysis tool for media (books, movies, games, etc). Please provide a social media platform and media item."
     print(greeting_message)
@@ -71,7 +69,7 @@ def rank_documents():
     print("Ranking Twitter documents...")
     subprocess.run(["/Users/wally/Documents/School/Courses/FA2022/CS410/MLTK/rank.sh"], shell=True)
 
-# TEMP place holder for metapy segment
+# TEMP place holder for SENTIMENT segment
 def analyze_documents():
     ranked_file = ''
     for file in glob.glob(directory_results+"*.txt"):
@@ -80,8 +78,6 @@ def analyze_documents():
 
     analyzed_file = ranked_file
     analyzed_file = analyzed_file.replace(directory_results + "ranked_", directory_results + "analyzed_")
-    # scored_file = ranked_file
-    # scored_file = scored_file.replace(directory_results + "ranked_", directory_results + "scored_")
 
     with open(ranked_file, "r") as rf, open(analyzed_file, "w") as wf:
         ranked_file_lines = rf.readlines()
@@ -115,7 +111,6 @@ def report_results():
             ratings_split = ratings.split(', ')
             rating_list.append(float(ratings_split[0]))
         avg_rating = sum(rating_list) / len(rating_list)
-        # print(avg_rating)
 
         result = normalize([avg_rating], {'actual': {'lower': -1, 'upper': 1}, 'desired': {'lower': 0, 'upper': 5}})
         to_write = "average rating = {0} range:(-1, 1), normalized rating = {1} range:(0, 5)".format(avg_rating, result)
@@ -123,17 +118,10 @@ def report_results():
 
         print("{0} has a favoritibility of {1:.2f}/5 on {2}".format(media_item, result[0], platform))
 
-
 def normalize(values, bounds):
     return [bounds['desired']['lower'] + (x - bounds['actual']['lower']) * (bounds['desired']['upper'] - bounds['desired']['lower']) / (bounds['actual']['upper'] - bounds['actual']['lower']) for x in values]
-        
 
-
-
-
-# TEMP place holder for metapy segment--run through scripted shell to allow for sub-process virtual environment
-
-
+# TEMP place holder for SENTIMENT segment
 
 def main():
     harvest_documents()
