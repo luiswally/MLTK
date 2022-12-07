@@ -110,4 +110,4 @@ class Ranker:
             f.write(str(i[1][1]) + " *** " + i[0])
         f.close()
 
-#Ranker(20) - This is the way to call this class, the parameter to the constructor being the number of top tweets you would like to retrieve.
+#Ranker(filepath, 20) - This is the way to call this class, the parameter to the constructor being the results filepath and the number of top tweets you would like to retrieve.
