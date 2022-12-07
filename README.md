@@ -17,5 +17,39 @@ Update header of rankerScript.py to use any python 3.7 environment (example show
 ```bash
 # Ensure you have the following dependencies up-to-date
 pip install --upgrade pip
-pip install nltk numpy
+pip install nltk numpy snscrape pandas
+```
+# Using MLTK
+## Command-line with Python 3.9 environment
+```bash
+# Run the main python script from the root directory
+> python main.py
+Welcome to MLTK, a social media sentiment analysis tool for media (books, movies, games, etc). Please provide a social media platform and media item.
+Social media platform: [] # 'twitter' is the only supported platform at this time
+Media item: [] # e.g. 'God of War'
+Harvesting Twitter documents...
+Ranking Twitter documents...
+{} has a favoritibility of {}/5 on twitter
+```
+The main.py script will utilize three packages (twitterDocumentHarvester, ranker, sentiment), as shown below.
+```mermaid
+graph LR
+A[twitterDocumentHarvester] --> B[ranker]
+B --> C[sentiment]
+C --> D[results]
+```
+
+The results will be stored in four *.txt files as shown below.
+```
+project
+│   README.md
+│   main.py    
+│
+└───results
+│   │   analyzed_media_item---%d-%m-%Y_%H-%M-%S.txt
+│   │   harvested_media_item---%d-%m-%Y_%H-%M-%S.txt
+│   │   ranked_media_item---%d-%m-%Y_%H-%M-%S.txt
+│   │   scored_media_item---%d-%m-%Y_%H-%M-%S.txt
+│   │
+│   ...
 ```
