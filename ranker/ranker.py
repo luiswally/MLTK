@@ -5,7 +5,8 @@ import pandas as pd
 
 class Ranker:
     # Constructor method of Ranker
-    def __init__(self, k = 50):
+    def __init__(self, filePath, k = 50):
+        self.filePath = filePath
         self.k = k
         self.startRanker() # starts the ranker function
     
@@ -29,7 +30,8 @@ class Ranker:
         # Reads input from the previous module's output
 
         #f = pd.read_csv("../results/HarvesterOut.txt")
-        f = open("../results/HarvesterOutput.txt", "r", errors="ignore")
+        #f = open("../results/HarvesterOutput.txt", "r", errors="ignore")
+        f = open(self.filePath, "r", errors="ignore")
         line = f.readline()
         tweets = []
         while(line):
@@ -100,7 +102,10 @@ class Ranker:
 
     def writeFile(self):
         # Writes the top k tweets into the output file
-        f = open('../results/RankerOutput.txt', 'w')
+        self.k = min(self.k, self.tweet_score_dump) # Can not output more tweets than what is scored
+        rankedFilePath = self.filePath.replace("results/harvested_", "results/ranked_")
+        # f = open('results/RankerOutput.txt', 'w')
+        f = open(rankedFilePath, 'w')
         for i in self.tweet_score_dump[0:self.k]:
             f.write(str(i[1][1]) + " *** " + i[0])
         f.close()
