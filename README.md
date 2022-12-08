@@ -1,6 +1,11 @@
 # MLTK - Modern Language Tool Kit
 
 MLTK will ntegrate MeTA with NLTK to provide a sentiment analysis of any media shared on social media. The application is aimed at social media owners, however for the sake of showcasing the application will be developed such that social media users can also utilize it to the extent provided.
+
+__Presentation:__ [MLTK Presentation and Demonstration](https://mediaspace.illinois.edu/media/t/1_1u75k8a6)
+
+_Contact adamwm3@illinois.edu if there is a problem accessing the media._
+
 # Getting Started
 Ensure you have two Python virtual environments (3.7 and 3.9).
 ## Python 3.7 Environment
