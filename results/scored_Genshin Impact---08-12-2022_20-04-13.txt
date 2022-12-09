@@ -1,0 +1,1 @@
+average rating = 0.35901599999999995 range:(-1, 1), normalized rating = 3.718032 range:(1, 5)
